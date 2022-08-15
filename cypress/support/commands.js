@@ -23,3 +23,13 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+
+Cypress.Commands.add("waitUntilElementIsVisible", (selector) => {
+  cy.log("Waiting until the element " + selector + " is displayed");
+  cy.get(selector, { timeout: 10000 }).should("be.visible");
+});
+
+Cypress.Commands.add("waitUntilElementIsInVisible", (selector) => {
+  cy.log("Waiting until the element " + selector + " is no more visible");
+  cy.get(selector, { timeout: 10000 }).should("not.be.visible");
+});
