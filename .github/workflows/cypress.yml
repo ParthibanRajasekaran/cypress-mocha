@@ -1,0 +1,50 @@
+name: Cypress Tests
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+  schedule:
+  # runs tests every day at 4am
+  - cron: '0 1 * * 1,3,5'
+
+jobs:
+
+  Run-tests-for:
+    runs-on: ubuntu-latest
+    container: cypress/browsers:node16.14.2-slim-chrome103-ff102
+    steps:
+      # https://github.com/actions/checkout
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Use Node.js 16.x
+        uses: actions/setup-node@v2
+        with:
+          node-version: 16.x
+
+      - name: Install dependencies
+        run: |
+          npm install
+
+      - name: Test run
+        run: npx cross-env E2E_ENV=.dev cypress run --browser=chrome --reporter mochawesome
+
+      - name: Deploy report page
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+         github_token: ${{ secrets.GITHUB_TOKEN }}
+         publish_dir:  /__w/cypress-mocha/cypress-mocha/mochawesome-report/mochawesome.html
+         commit_message: ${{ github.event.head_commit.message }}
+
+      - uses: actions/upload-artifact@v2
+        if: failure()
+        with:
+          name: cypress-screenshots
+          path: cypress/screenshots
+      # Test run video was always captured, so this action uses "always()" condition
+
+      - uses: actions/upload-artifact@v2
+        if: always()
+        with:
+          name: cypress-videos
+          path: cypress/videos
