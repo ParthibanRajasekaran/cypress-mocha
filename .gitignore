@@ -101,6 +101,8 @@ dist
 
 .vscode/
 
+.DS_Store
+
 mochawesome-report/
 package-lock.json
 cypress/screenshots/
