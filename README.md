@@ -60,31 +60,31 @@ npx cypress run
 To run the tests via CLI with an .env (cypress-cucumber-html/.env)
 
 ```bash
-npx cross-env E2E_ENV= cypress run
+npx cross-env ENV_CONFIG= cypress run
 ```
 
 To run the tests via CLI with an .env (cypress-cucumber-html/.env.dev)
 
 ```bash
-npx cross-env E2E_ENV=.dev cypress run
+npx cross-env ENV_CONFIG=.dev cypress run
 ```
 
 To run the tests via CLI with an .env (cypress-cucumber-html/.env.qa)
 
 ```bash
-npx cross-env E2E_ENV=.qa cypress run
+npx cross-env ENV_CONFIG=.qa cypress run
 ```
 
 To run the tests via CLI with an env config
 
 ```bash
-npx cross-env E2E_ENV=.dev cypress run --browser chrome
+npx cross-env ENV_CONFIG=.dev cypress run --browser chrome
 ```
 
 To run the tests via CLI and generate a execution report
 
 ```bash
-npx cross-env E2E_ENV=.dev cypress run --reporter mochawesome
+npx cross-env ENV_CONFIG=.dev cypress run --reporter mochawesome
 ```
 
 ## Implementing tests
