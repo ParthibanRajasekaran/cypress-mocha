@@ -1,0 +1,20 @@
+{
+  "name": "cypress-mocha",
+  "version": "1.0.0",
+  "description": "Cypress playground with mocha and chai",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ParthibanRajasekaran/cypress-mocha.git"
+  },
+  "author": "Parthiban Rajasekaran",
+  "devDependencies": {
+    "cross-env": "^7.0.3",
+    "cypress": "^10.4.0",
+    "dotenv": "^16.0.1",
+    "mochawesome": "^7.1.3"
+  }
+}
