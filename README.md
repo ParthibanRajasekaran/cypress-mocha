@@ -87,6 +87,22 @@ To run the tests via CLI and generate a execution report
 npx cross-env ENV_CONFIG=.dev cypress run --reporter mochawesome
 ```
 
+To run tests with annotation @smoke
+```bash
+npx cross-env ENV_CONFIG=.dev cypress run --reporter mochawesome --env grepTags="@smoke"
+```
+
+To run tests without annotation @smoke
+```bash
+npx cross-env ENV_CONFIG=.dev cypress run --reporter mochawesome --env grepTags="-@smoke"
+```
+
+To run tests with combination of @annotation1 but without @smoke
+```bash
+npx cross-env ENV_CONFIG=.dev cypress run --reporter mochawesome --env grepTags="@annotation1+-@smoke"
+```
+
+
 ## Implementing tests
 
 - Create page classes in **cypress / pages** and add locators and implementations to it (Only [CSS selectors](https://saucelabs.com/resources/articles/selenium-tips-css-selectors) can be used as locators)
