@@ -32,6 +32,8 @@ module.exports = defineConfig({
 
       console.log(`Tests are running on ${config.env.environment} environment`);
 
+      require("cypress-grep/src/plugin")(config);
+
       return config;
     },
     specPattern: "cypress/e2e/herokuapp/*.cy.js",

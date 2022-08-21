@@ -14,6 +14,7 @@
   "devDependencies": {
     "cross-env": "^7.0.3",
     "cypress": "^10.4.0",
+    "cypress-grep": "^3.0.2",
     "dotenv": "^16.0.1",
     "mochawesome": "^7.1.3"
   }

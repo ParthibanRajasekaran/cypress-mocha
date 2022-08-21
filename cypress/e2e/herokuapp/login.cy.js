@@ -13,7 +13,7 @@ describe("Herokuapp - Login", () => {
     landingPage.navigateToFormAuthentificationPage();
   });
 
-  it.only("verify successful login", () => {
+  it("verify successful login", () => {
     loginPage.getPageHeader().then(function (pageHeader) {
       cy.log(pageHeader.text());
     });
@@ -21,5 +21,16 @@ describe("Herokuapp - Login", () => {
     loginPage.enterUsername(Cypress.env("username"));
     loginPage.enterPassword(Cypress.env("password"));
     loginPage.clickLoginButton();
+  });
+
+  it("verify unsuccessful login", { tags: "@smoke" }, () => {
+    loginPage.getPageHeader().then(function (pageHeader) {
+      cy.log(pageHeader.text());
+    });
+
+    loginPage.enterUsername("testuser");
+    loginPage.enterPassword("DummyPassword");
+    loginPage.clickLoginButton();
+    cy.log(loginPage.getLoginFailureMessage());
   });
 });
