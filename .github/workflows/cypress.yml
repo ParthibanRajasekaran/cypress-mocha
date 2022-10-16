@@ -10,12 +10,11 @@ on:
 jobs:
   Run-tests-for:
     runs-on: ubuntu-latest
+    container: cypress/browsers:node16.14.2-slim-chrome103-ff102
     strategy:
       matrix:
        # browser: [chrome, firefox, electron, chromium]
         browser: [chrome, electron]
-    container:
-      image: cypress/browsers:node16.14.2-slim-chrome103-ff102  
     steps:
       # https://github.com/actions/checkout
       - name: Checkout
@@ -29,15 +28,8 @@ jobs:
       - name: Install dependencies
         run: |
           npm install
-
-      - name: Cypress test run on ${{ matrix.browser }} browser
-        uses: cypress-io/github-action@v4
-        with:
-          install: false
-          command: npx cross-env ENV_CONFIG=.dev cypress run --reporter mochawesome --browser=${{ matrix.browser }}
-          record: false
-          parallel: false
-          config: videosFolder=/tmp/cypress-videos
+      - name: Test run
+        run: npx cross-env ENV_CONFIG=.dev cypress run --browser=${{ matrix.browser }} --reporter mochawesome
 
       - name: Deploy report page
         uses: peaceiris/actions-gh-pages@v3
