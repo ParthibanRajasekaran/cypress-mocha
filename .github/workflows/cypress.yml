@@ -13,7 +13,7 @@ jobs:
     strategy:
       matrix:
        # browser: [chrome, firefox, electron, chromium]
-        browser: [chrome, firefox]
+        browser: [chrome, electron]
     container:
       image: cypress/browsers:node16.14.2-slim-chrome103-ff102  
     steps:
@@ -34,7 +34,7 @@ jobs:
         uses: cypress-io/github-action@v4
         with:
           config-file: cypress.config.js
-          command: npx cross-env ENV_CONFIG=.dev cypress run --reporter mochawesome --browser=${{ matrix.browser }}
+          command: npx cross-env ENV_CONFIG=.dev cypress run --reporter mochawesome --browser=${{ matrix.browser }} --legacy-peer-deps
 
       - name: Deploy report page
         uses: peaceiris/actions-gh-pages@v3
