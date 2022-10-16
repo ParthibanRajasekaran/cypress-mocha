@@ -33,8 +33,11 @@ jobs:
       - name: Cypress test run on ${{ matrix.browser }} browser
         uses: cypress-io/github-action@v4
         with:
-          config-file: cypress.config.js
-          command: npx cross-env ENV_CONFIG=.dev cypress run --reporter mochawesome --browser=${{ matrix.browser }}
+          install: false
+          start: npx cross-env ENV_CONFIG=.dev cypress run --reporter mochawesome --browser=${{ matrix.browser }}
+          browser: chrome
+          record: true
+          parallel: false
           config: videosFolder=/tmp/cypress-videos
 
       - name: Deploy report page
