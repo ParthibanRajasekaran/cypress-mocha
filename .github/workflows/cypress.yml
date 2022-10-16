@@ -26,7 +26,7 @@ jobs:
           npm install
 
       - name: Test run
-        run: npx cross-env ENV_CONFIG=.dev cypress run --browser=chrome --reporter mochawesome
+        run: npx cross-env ENV_CONFIG=.dev cypress run --reporter mochawesome
 
       - name: Deploy report page
         uses: peaceiris/actions-gh-pages@v3
