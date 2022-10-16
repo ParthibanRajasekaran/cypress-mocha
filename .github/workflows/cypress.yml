@@ -35,7 +35,7 @@ jobs:
         with:
           install: false
           command: npx cross-env ENV_CONFIG=.dev cypress run --reporter mochawesome --browser=${{ matrix.browser }}
-          record: true
+          record: false
           parallel: false
           config: videosFolder=/tmp/cypress-videos
 
