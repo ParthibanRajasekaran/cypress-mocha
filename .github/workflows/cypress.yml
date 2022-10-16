@@ -25,8 +25,13 @@ jobs:
         run: |
           npm install
 
-      - name: Test run
-        run: npx cross-env ENV_CONFIG=.dev cypress run --reporter mochawesome
+      - name: 'E2E Tests - Chrome'
+        uses: cypress-io/github-action@v4
+        with:
+          start: npx cross-env ENV_CONFIG=.dev cypress run --reporter mochawesome
+          browser: chrome
+          group: 'E2E Test suite'
+          config: videosFolder=/tmp/cypress-videos
 
       - name: Deploy report page
         uses: peaceiris/actions-gh-pages@v3
