@@ -34,8 +34,7 @@ jobs:
         uses: cypress-io/github-action@v4
         with:
           install: false
-          start: npx cross-env ENV_CONFIG=.dev cypress run --reporter mochawesome --browser=${{ matrix.browser }}
-          browser: ${{ matrix.browser }}
+          command: npx cross-env ENV_CONFIG=.dev cypress run --reporter mochawesome --browser=${{ matrix.browser }}
           record: true
           parallel: false
           config: videosFolder=/tmp/cypress-videos
