@@ -24,6 +24,7 @@ jobs:
       - name: Install dependencies
         run: |
           npm install
+          chown -R 1001:1001 /github/home/.cache && echo "pwn dat cache"
 
       - name: Test run
         run: npx cross-env ENV_CONFIG=.dev cypress run --browser=chrome --reporter mochawesome
