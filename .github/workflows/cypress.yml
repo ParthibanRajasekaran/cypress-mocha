@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        browser: [chrome, firefox, electron, chromium ]
+        browser: [chrome, firefox, electron ]
     name: Cypress tests using ${{ matrix.browser }} browser
     container: cypress/browsers:node16.16.0-chrome105-ff104-edge
     steps:
