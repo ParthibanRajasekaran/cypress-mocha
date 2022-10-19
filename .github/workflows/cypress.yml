@@ -11,6 +11,10 @@ jobs:
   Run-tests-for:
     runs-on: ubuntu-latest
     container: cypress/browsers:node16.14.2-slim-chrome103-ff102
+    strategy:
+      matrix:
+       # browser: [chrome, firefox, electron, chromium]
+        browser: [chrome, electron]
     steps:
       # https://github.com/actions/checkout
       - name: Checkout
@@ -27,7 +31,7 @@ jobs:
           chown -R 1001:1001 /github/home/.cache && echo "pwn dat cache"
 
       - name: Test run
-        run: npx cross-env ENV_CONFIG=.dev cypress run --browser=chrome --reporter mochawesome
+        run: npx cross-env ENV_CONFIG=.dev cypress run --browser=${{ matrix.browser }} --reporter mochawesome
 
       - name: Deploy report page
         uses: peaceiris/actions-gh-pages@v3
