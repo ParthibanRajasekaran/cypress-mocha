@@ -2,7 +2,7 @@
 
   <p align="left">
     <a href="https://github.com/ParthibanRajasekaran/cypress-mocha/actions">
-      <img alt="Tests" src="https://github.com/ParthibanRajasekaran/cypress-cucumber/workflows/Cypress Tests/badge.svg" />
+      <img alt="Tests" src="https://github.com/ParthibanRajasekaran/cypress-mocha/workflows/Cypress Tests/badge.svg" />
     </a>
     <br />
   </p>
