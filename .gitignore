@@ -107,3 +107,5 @@ mochawesome-report/
 package-lock.json
 cypress/screenshots/
 cypress/videos/
+
+.idea/

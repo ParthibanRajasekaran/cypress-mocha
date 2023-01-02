@@ -37,7 +37,7 @@ module.exports = defineConfig({
 
       return config;
     },
-    specPattern: "cypress/e2e/**/*.cy.js",
+    specPattern: "cypress/e2e/herokuapp/*.cy.js",
     supportFile: "cypress/support/e2e.js",
   },
 });

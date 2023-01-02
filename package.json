@@ -13,7 +13,7 @@
   "author": "Parthiban Rajasekaran",
   "devDependencies": {
     "cross-env": "^7.0.3",
-    "cypress": "^10.10.0",
+    "cypress": "^12.2.0",
     "cypress-grep": "^3.0.3",
     "dotenv": "^16.0.3",
     "mochawesome": "^7.1.3"
