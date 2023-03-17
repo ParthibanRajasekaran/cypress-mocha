@@ -1,12 +1,6 @@
 # cypress-mocha
 
-  <p align="left">
-    <a href="https://github.com/ParthibanRajasekaran/cypress-mocha/actions">
-      <img alt="Tests" src="https://github.com/ParthibanRajasekaran/cypress-mocha/workflows/Cypress Tests/badge.svg" />
-    </a>
-    <br />
-  </p>
-
+[![cypress-mocha](https://img.shields.io/endpoint?url=https://cloud.cypress.io/badge/detailed/vwviug/main&style=flat&logo=cypress)](https://cloud.cypress.io/projects/vwviug/runs)
 Official documentation: [Cypress](https://docs.cypress.io)
 To know about recent Cypress feature click [here](https://www.cypress.io/features/)
 
