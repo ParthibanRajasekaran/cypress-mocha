@@ -30,7 +30,7 @@ jobs:
       - run: npm install
 
       - name: Test run
-        run: npx cross-env E2E_ENV=.dev cypress run --browser=${{ matrix.browser }} --env grepTags="-@smoke" --record --key ${{secrets.CYPRESS_RECORD_KEY}}  --reporter mochawesome
+        run: npx cypress run --browser=${{ matrix.browser }} --env grepTags="-@smoke" --record --key ${{secrets.CYPRESS_RECORD_KEY}}  --reporter mochawesome --config-file cypress.dev.config.js
 
       - name: Deploy report page
         uses: peaceiris/actions-gh-pages@v3
@@ -47,7 +47,7 @@ jobs:
       # Test run video was always captured, so this action uses "always()" condition
 
       - uses: actions/upload-artifact@v3
-        if: always()
+        if: failure()
         with:
           name: cypress-videos
           path: cypress/videos
