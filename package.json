@@ -4,7 +4,8 @@
   "description": "Cypress playground with mocha and chai",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "pretest": "mkdir -p cypress/screenshots && mkdir -p cypress/videos",
+    "test": "npx cross-env ENV_CONFIG=.dev cypress run --reporter mochawesome --env grepTags='-@smoke'"
   },
   "repository": {
     "type": "git",
