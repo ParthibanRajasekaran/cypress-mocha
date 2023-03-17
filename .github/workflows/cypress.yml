@@ -15,7 +15,9 @@ jobs:
       matrix:
         browser: [chrome, firefox, electron ]
     name: Cypress tests using ${{ matrix.browser }} browser
-    container: cypress/browsers:node16.16.0-chrome105-ff104-edge
+    container:
+      image: cypress/browsers:node16.16.0-chrome105-ff104-edge
+      options: --user 1001  # ← THIS IS THE IMPORTANT LINE TO ENABLE DIRECTORY CREATION!
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -26,9 +28,6 @@ jobs:
           node-version: '16.x'
 
       - run: npm install
-
-      - name: Prepare Cypress directories
-        run: npm run pretest
 
       - name: Test run
         run: npx cross-env E2E_ENV=.dev cypress run --browser=${{ matrix.browser }} --env grepTags="-@smoke" --record --key ${{secrets.CYPRESS_RECORD_KEY}}  --reporter mochawesome
