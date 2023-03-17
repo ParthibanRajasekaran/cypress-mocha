@@ -28,7 +28,7 @@ jobs:
       - run: npm install
 
       - name: Test run
-        run: npx cross-env E2E_ENV=.dev cypress run --browser=${{ matrix.browser }} --env TAGS="@login" --record --key ${{secrets.CYPRESS_RECORD_KEY}}  --reporter mochawesome
+        run: npx cross-env E2E_ENV=.dev cypress run --browser=${{ matrix.browser }} --env grepTags="-@smoke" --record --key ${{secrets.CYPRESS_RECORD_KEY}}  --reporter mochawesome
 
       - name: Deploy report page
         uses: peaceiris/actions-gh-pages@v3
