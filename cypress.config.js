@@ -37,6 +37,14 @@ module.exports = defineConfig({
 
       return config;
     },
+    env: {
+      URL:"https://the-internet.herokuapp.com",
+      ENVIRONMENT:"default",
+      USERNAME:"tomsmith",
+      PASSWORD:"SuperSecretPassword!",
+      EMAIL_ID:"sample@test.com"
+    },
+
     specPattern: "cypress/e2e/herokuapp/*.cy.js",
     supportFile: "cypress/support/e2e.js",
   },

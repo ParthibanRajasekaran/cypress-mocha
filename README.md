@@ -51,7 +51,6 @@ Verify if the [Test Runner](https://docs.cypress.io/guides/core-concepts/test-ru
 In the test runner, select the feature to execute and the desired browser from the dropdown and visualize the test execution
 
 To run the tests via CLI on a headless mode
-To run the tests via CLI on a headless mode
 
 ```bash
 npx cypress run
@@ -60,46 +59,46 @@ npx cypress run
 To run the tests via CLI with an .env (cypress-cucumber-html/.env)
 
 ```bash
-npx cross-env ENV_CONFIG= cypress run
+npx cypress run --config-file cypress.dev.config.js
 ```
 
-To run the tests via CLI with an .env (cypress-cucumber-html/.env.dev)
+To run the tests via CLI with an .env (cypress-mocha/cypress.dev.config.js)
 
 ```bash
-npx cross-env ENV_CONFIG=.dev cypress run
+npx cypress run --reporter mochawesome --config-file cypress.dev.config.js
 ```
 
-To run the tests via CLI with an .env (cypress-cucumber-html/.env.qa)
+To run the tests via CLI with an .env (cypress-mocha/cypress.qa.config.js)
 
 ```bash
-npx cross-env ENV_CONFIG=.qa cypress run
+npx cypress run --reporter mochawesome --config-file cypress.qa.config.js
 ```
 
 To run the tests via CLI with an env config
 
 ```bash
-npx cross-env ENV_CONFIG=.dev cypress run --browser chrome
+npx cypress run --reporter mochawesome --config-file cypress.dev.config.js --browser chrome
 ```
 
 To run the tests via CLI and generate a execution report
 
 ```bash
-npx cross-env ENV_CONFIG=.dev cypress run --reporter mochawesome
+npx cypress run --reporter mochawesome --config-file cypress.dev.config.js
 ```
 
 To run tests with annotation @smoke
 ```bash
-npx cross-env ENV_CONFIG=.dev cypress run --reporter mochawesome --env grepTags="@smoke"
+npx cypress run --reporter mochawesome --env grepTags='@smoke' --config-file cypress.dev.config.js
 ```
 
 To run tests without annotation @smoke
 ```bash
-npx cross-env ENV_CONFIG=.dev cypress run --reporter mochawesome --env grepTags="-@smoke"
+npx cypress run --reporter mochawesome --env grepTags='-@smoke' --config-file cypress.dev.config.js
 ```
 
 To run tests with combination of @annotation1 but without @smoke
 ```bash
-npx cross-env ENV_CONFIG=.dev cypress run --reporter mochawesome --env grepTags="@annotation1+-@smoke"
+npx cypress run --reporter mochawesome --env grepTags='@annotation1+-@smoke' --config-file cypress.dev.config.js
 ```
 
 
