@@ -31,7 +31,7 @@ module.exports = defineConfig({
       config.env.password = process.env.PASSWORD;
       config.env.emailId = process.env.EMAIL_ID;
 
-      console.log(`Tests are running on ${config.env.environment} environment`);
+      console.log(`Tests are running on ${config.env.ENVIRONMENT} environment`);
 
       require('@cypress/grep/src/plugin')(config);
 

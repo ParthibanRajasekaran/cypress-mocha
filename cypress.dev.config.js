@@ -5,7 +5,7 @@ module.exports = {
   env: {
     ...baseConfig.env,
     URL:"https://the-internet.herokuapp.com",
-    ENVIRONMENT:"dev",
+     v:"dev",
     USERNAME:"tomsmith",
     PASSWORD:"SuperSecretPassword!",
     EMAIL_ID:"sample@test.com"

@@ -10,7 +10,7 @@ describe("Herokuapp - Login", () => {
     // Since we want to visit the same URL at the start of all our tests,
     // we include it in our beforeEach function so that it runs before each test
     // cy.visit(Cypress.env("url"));
-    cy.visit("https://the-internet.herokuapp.com");
+    cy.visit(Cypress.env("URL"));
     landingPage.navigateToFormAuthentificationPage();
   });
 
@@ -19,8 +19,8 @@ describe("Herokuapp - Login", () => {
       cy.log(pageHeader.text());
     });
 
-    loginPage.enterUsername(Cypress.env("username"));
-    loginPage.enterPassword(Cypress.env("password"));
+    loginPage.enterUsername(Cypress.env("USERNAME"));
+    loginPage.enterPassword(Cypress.env("PASSWORD"));
     loginPage.clickLoginButton();
   });
 
