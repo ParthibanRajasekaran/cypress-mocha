@@ -111,4 +111,5 @@ cypress/videos/
 .idea/
 
 result/
+results/
 log/
