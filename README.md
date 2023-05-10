@@ -1,4 +1,4 @@
-# Cypress Page Object Model and Test Execution
+# Cypress Tech Task - TechFin
 
 This documentation provides detailed steps for creating page classes, test classes, and executing them using Cypress
 
