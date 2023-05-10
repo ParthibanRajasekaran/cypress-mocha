@@ -1,26 +1,14 @@
 /// <reference types="cypress" />
 
 const homePage = require("../../pages/HomePage")
-const demoPage = require("../../pages/DemoPage")
 
-describe("Kevin.eu - Payments Demo", () => {
+describe("Fintech - Handle Cookies", () => {
 
-  it("Payments verification", () => {
-    homePage.visit()
-        .acceptCookies()
-        .openHamburgerMenu()
-        .navigateToDemoPage()
-        .visitDemoPage();
+    it("Cookies handling verification", () => {
+        homePage.visit()
+            .acceptCookies()
 
-    demoPage.clickBankPaymentButton()
-        .enterAmount(Cypress.env("AMOUNT"))
-        .enterEmail(Cypress.env("EMAIL_ID"))
-        .clickTermsAndConditions()
-        .submitForm()
-        .verifyErrorMessageIsDisplayedInRed()
-        .checkTermsAndConditions()
-        .submitForm()
-        .verifyFormSubmission()
-        .verifyUserIsNavigatedToBankLogin();
-  });
+        homePage.visit()
+            .verifyCookiesBannerIsNotVisible()
+    });
 });
