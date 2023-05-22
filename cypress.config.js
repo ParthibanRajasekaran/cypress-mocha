@@ -30,6 +30,7 @@ module.exports = defineConfig({
       config.env.username = process.env.USERNAME;
       config.env.password = process.env.PASSWORD;
       config.env.emailId = process.env.EMAIL_ID;
+      config.env.key = process.env.KEY;
 
       console.log(`Tests are running on ${config.env.ENVIRONMENT} environment`);
 
