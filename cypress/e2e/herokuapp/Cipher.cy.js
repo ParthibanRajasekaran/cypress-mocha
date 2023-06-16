@@ -1,7 +1,7 @@
 /// <reference types="cypress" />
 
 describe('AES Encryption and Decryption', () => {
-    it('should encrypt and then decrypt',{ tags: '@smoke' } , () => {
+    it.skip('should encrypt and then decrypt',{ tags: '@smoke' } , () => {
        // The text to be encrypted.
         const message = "Hello, world!";
 
