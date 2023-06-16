@@ -28,14 +28,14 @@ jobs:
       - run: npm install
 
       - name: Test run
-        run: npx cypress run --browser=${{ matrix.browser }} --env grepTags="-@smoke" --record --key ${{secrets.CYPRESS_RECORD_KEY}} --reporter mochawesome KEY=${{secrets.CIPHER_KEY}}
+        run: npx cypress run --browser=${{ matrix.browser }} --env grepTags="-@smoke" --record --key ${{secrets.CYPRESS_RECORD_KEY}} --reporter mochawesome --reporter-options reportDir=mochawesome-report,overwrite=false KEY=${{secrets.CIPHER_KEY}}
 
       - name: List report files
         run: |
           echo "Listing mochawesome-report directory contents:"
           ls -al mochawesome-report
           echo "Displaying mochawesome.json contents:"
-          cat mochawesome.json
+          cat mochawesome-report/mochawesome.json
 
       - name: Generate report
         run: npx mochawesome-merge 'mochawesome-report/*.json' > mochawesome.json && npx marge mochawesome.json -f index -o public
