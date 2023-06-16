@@ -1,3 +1,5 @@
+/// <reference types="cypress" />
+
 const dropDownPage = require("../../pages/DropDownPage");
 const landingPage = require("../../pages/LandingPage");
 
