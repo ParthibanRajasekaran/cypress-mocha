@@ -4,11 +4,9 @@ on:
     branches: [ main ]
   workflow_dispatch:
   schedule:
-    # runs tests every day at 3am
     - cron: '0 3 * * 1,3,5'
 
 jobs:
-
   login-tests:
     runs-on: ubuntu-latest
     strategy:
@@ -17,7 +15,7 @@ jobs:
     name: Cypress tests using ${{ matrix.browser }} browser
     container:
       image: cypress/browsers:node16.16.0-chrome105-ff104-edge
-      options: --user 1001  # ← THIS IS THE IMPORTANT LINE TO ENABLE DIRECTORY CREATION!
+      options: --user 1001  # THIS IS THE IMPORTANT LINE TO ENABLE DIRECTORY CREATION!
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -30,7 +28,10 @@ jobs:
       - run: npm install
 
       - name: Test run
-        run: npx cypress run --browser=${{ matrix.browser }} --env grepTags="-@smoke" --record --key ${{secrets.CYPRESS_RECORD_KEY}}  --reporter mochawesome KEY=${{secrets.CIPHER_KEY}}
+        run: npx cypress run --browser=${{ matrix.browser }} --env grepTags="-@smoke" --record --key ${{secrets.CYPRESS_RECORD_KEY}} --reporter mochawesome KEY=${{secrets.CIPHER_KEY}}
+
+      - name: Generate report
+        run: npx mochawesome-merge 'mochawesome-report/*.json' > mochawesome.json && npx marge mochawesome.json -f index -o public
 
       - name: Deploy report page
         uses: peaceiris/actions-gh-pages@v3
@@ -44,7 +45,6 @@ jobs:
         with:
           name: cypress-screenshots
           path: cypress/screenshots
-      # Test run video was always captured, so this action uses "always()" condition
 
       - uses: actions/upload-artifact@v3
         if: failure()
