@@ -1,7 +1,7 @@
 {
     "auth": {
-        "username": "bsuser7501665",
-        "access_key": "vEit5qmnpQQYcoPf9ZcC"
+        "username": "${{ secrets.BROWSERSTACK_USERNAME }}",
+        "access_key": "${{ secrets.BROWSERSTACK_ACCESS_KEY }}"
     },
     "browsers": [{
         "browser": "chrome",

@@ -1,0 +1,32 @@
+name: Cypress Tests on BrowserStack
+
+on:
+  push:
+    branches:
+      - execution/browserstack
+
+jobs:
+  cypress-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Use Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: 18  # Use the Node.js version that matches your project
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Replace secrets in config
+        run: |
+          sed -i 's/${{ secrets.BROWSERSTACK_USERNAME }}/${{ secrets.BROWSERSTACK_USERNAME }}/g' browserstack.json
+          sed -i 's/${{ secrets.BROWSERSTACK_ACCESS_KEY }}/${{ secrets.BROWSERSTACK_ACCESS_KEY }}/g' browserstack.json
+
+      - name: Run Cypress tests
+        env:
+          KEY: temp
+        run: npx browserstack-cypress run --sync --env KEY=${{ env.KEY }}
