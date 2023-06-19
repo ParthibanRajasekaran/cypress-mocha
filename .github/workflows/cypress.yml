@@ -15,7 +15,7 @@ jobs:
         browser: [chrome, firefox, electron ]
     name: Cypress tests using ${{ matrix.browser }} browser
     container:
-      image: cypress/browsers:node16.16.0-chrome105-ff104-edge
+      image: cypress/browsers:node-18.16.0-chrome-113.0.5672.92-1-ff-113.0-edge-113.0.1774.35-1
       options: --user 1001  # THIS IS THE IMPORTANT LINE TO ENABLE DIRECTORY CREATION!
     steps:
       - name: Checkout
