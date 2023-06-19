@@ -1,27 +1,36 @@
 {
-    "auth": {
-        "username": "bsuser7501665",
-        "access_key": "vEit5qmnpQQYcoPf9ZcC"
-    },
     "browsers": [{
         "browser": "chrome",
         "os": "Windows 10",
         "versions": ["latest", "latest - 1"]
-    }
+    },
+        {
+            "browser": "firefox",
+            "os": "OS X Mojave",
+            "versions": ["latest", "latest - 1"]
+        },
+        {
+            "browser": "edge",
+            "os": "OS X Catalina",
+            "versions": ["latest"]
+        }
     ],
     "run_settings": {
         "cypress_config_file": "./cypress.config.js",
         "cypress_version": "12.latest",
         "npm_dependencies": {
             "@cypress/grep": "^3.1.5",
-            "browserstack-cypress-cli": "^1.20.0",
-            "cross-env": "^7.0.3",
-            "dotenv": "^16.0.3",
+            "browserstack-cypress-cli": "^1.22.1",
+            "crypto-js": "^4.1.1",
+            "cypress": "^12.14.0",
+            "dotenv": "^16.2.0",
             "mocha": "^10.2.0",
-            "mochawesome": "^7.1.3"
+            "mochawesome": "^7.1.3",
+            "mochawesome-merge": "^4.3.0",
+            "mochawesome-report-generator": "^6.2.0"
         },
         "project_name": "Cypress-Mocha",
-        "build_name": "Build no: 1",
+        "build_name": "Sample test execution",
         "parallels": 5,
         "exclude": ["cypress/e2e/2-advanced-examples/*.cy.js", "cypress/e2e/1-getting-started/*.cy.js"]
     }

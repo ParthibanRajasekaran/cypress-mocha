@@ -1,4 +1,5 @@
-name: Cypress Tests
+name: Cross-Browser Cypress Tests
+
 on:
   push:
     branches: [ main ]
@@ -14,28 +15,21 @@ jobs:
         browser: [chrome, firefox, electron ]
     name: Cypress tests using ${{ matrix.browser }} browser
     container:
-      image: cypress/browsers:node16.16.0-chrome105-ff104-edge
+      image: cypress/browsers:node-18.16.0-chrome-113.0.5672.92-1-ff-113.0-edge-113.0.1774.35-1
       options: --user 1001  # THIS IS THE IMPORTANT LINE TO ENABLE DIRECTORY CREATION!
     steps:
       - name: Checkout
         uses: actions/checkout@v3
 
-      - name: Install npm dependencies using Node.js 16.x
+      - name: Install npm dependencies using Node.js 18.x
         uses: actions/setup-node@v3
         with:
-          node-version: '16.x'
+          node-version: '18.x'
 
       - run: npm install
 
       - name: Test run
         run: npx cypress run --browser=${{ matrix.browser }} --env grepTags="-@smoke" --record --key ${{secrets.CYPRESS_RECORD_KEY}} --reporter mochawesome --reporter-options reportDir=mochawesome-report,overwrite=false KEY=${{secrets.CIPHER_KEY}}
-
-      - name: List report files
-        run: |
-          echo "Listing mochawesome-report directory contents:"
-          ls -al mochawesome-report
-          echo "Displaying mochawesome.json contents:"
-          cat mochawesome-report/mochawesome.json
 
       - name: Generate report
         run: npx mochawesome-merge 'mochawesome-report/*.json' > mochawesome.json && npx marge mochawesome.json -f index -o public
@@ -48,13 +42,19 @@ jobs:
           commit_message: ${{ github.event.head_commit.message }}
 
       - uses: actions/upload-artifact@v3
+        if: always()
+        with:
+          name: cypress-report-${{ matrix.browser }}
+          path: public
+
+      - uses: actions/upload-artifact@v3
         if: failure()
         with:
-          name: cypress-screenshots
+          name: cypress-screenshots-${{ matrix.browser }}
           path: cypress/screenshots
 
       - uses: actions/upload-artifact@v3
         if: failure()
         with:
-          name: cypress-videos
+          name: cypress-videos-${{ matrix.browser }}
           path: cypress/videos
