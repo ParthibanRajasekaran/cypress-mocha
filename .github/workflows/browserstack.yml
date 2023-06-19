@@ -2,11 +2,10 @@ name: Cypress Tests on BrowserStack
 
 on:
   push:
-    branches:
-      - execution/browserstack
-    workflow_dispatch:
-    schedule:
-      - cron: '0 2 * * 2,4'
+    branches: [ main ]
+  workflow_dispatch:
+  schedule:
+    - cron: '0 2 * * 2,6'
 
 jobs:
   cypress-test:
