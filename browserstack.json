@@ -1,8 +1,4 @@
 {
-    "auth": {
-        "username": "${{ secrets.BROWSERSTACK_USERNAME }}",
-        "access_key": "${{ secrets.BROWSERSTACK_ACCESS_KEY }}"
-    },
     "browsers": [{
         "browser": "chrome",
         "os": "Windows 10",

@@ -23,12 +23,5 @@ jobs:
 
       - run: npm install
 
-      - name: Replace secrets in config
-        run: |
-          sed -i 's/${{ secrets.BROWSERSTACK_USERNAME }}/${{ secrets.BROWSERSTACK_USERNAME }}/g' browserstack.json
-          sed -i 's/${{ secrets.BROWSERSTACK_ACCESS_KEY }}/${{ secrets.BROWSERSTACK_ACCESS_KEY }}/g' browserstack.json
-
-      - name: Run Cypress tests
-        env:
-          KEY: temp
-        run: npx browserstack-cypress run --sync --env KEY=${{ env.KEY }}
+      - name: Run Cypress tests on BrowserStack
+        run: npx browserstack-cypress run --sync --username ${{ secrets.BROWSERSTACK_USERNAME }} --key ${{ secrets.BROWSERSTACK_ACCESS_KEY }} --env KEY=${{secrets.CIPHER_KEY}}
