@@ -1,8 +1,8 @@
-name: Cypress Tests
+name: Cross-Browser Cypress Tests
 
 on:
   push:
-    branches: [ main, execution/browserstack ]
+    branches: [ main ]
   workflow_dispatch:
   schedule:
     - cron: '0 3 * * 1,3,5'
@@ -21,22 +21,15 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
-      - name: Install npm dependencies using Node.js 16.x
+      - name: Install npm dependencies using Node.js 18.x
         uses: actions/setup-node@v3
         with:
-          node-version: '16.x'
+          node-version: '18.x'
 
       - run: npm install
 
       - name: Test run
         run: npx cypress run --browser=${{ matrix.browser }} --env grepTags="-@smoke" --record --key ${{secrets.CYPRESS_RECORD_KEY}} --reporter mochawesome --reporter-options reportDir=mochawesome-report,overwrite=false KEY=${{secrets.CIPHER_KEY}}
-
-      - name: List report files
-        run: |
-          echo "Listing mochawesome-report directory contents:"
-          ls -al mochawesome-report
-          echo "Displaying mochawesome.json contents:"
-          cat mochawesome-report/mochawesome.json
 
       - name: Generate report
         run: npx mochawesome-merge 'mochawesome-report/*.json' > mochawesome.json && npx marge mochawesome.json -f index -o public
