@@ -20,7 +20,7 @@
         "cypress_version": "12.latest",
         "npm_dependencies": {
             "@cypress/grep": "^3.1.5",
-            "browserstack-cypress-cli": "^1.22.1",
+            "browserstack-cypress-cli": "^1.25.1",
             "crypto-js": "^4.1.1",
             "cypress": "^12.14.0",
             "dotenv": "^16.2.0",
