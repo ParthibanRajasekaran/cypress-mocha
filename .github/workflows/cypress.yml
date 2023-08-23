@@ -40,6 +40,7 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./public
           commit_message: ${{ github.event.head_commit.message }}
+          force: true
 
       - uses: actions/upload-artifact@v3
         if: always()
