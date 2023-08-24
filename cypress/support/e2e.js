@@ -28,5 +28,4 @@ Cypress.on("uncaught:exception", (err, runnable) => {
   // failing the test
   return false;
 });
-
-require('browserstack-cypress-cli/bin/testObservability/cypress');
+// require('browserstack-cypress-cli/bin/testObservability/cypress');
