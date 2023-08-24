@@ -20,10 +20,10 @@
         "cypress_version": "12.latest",
         "npm_dependencies": {
             "@cypress/grep": "^3.1.5",
-            "browserstack-cypress-cli": "^1.25.1",
+            "browserstack-cypress-cli": "^1.25.2",
             "crypto-js": "^4.1.1",
             "cypress": "^12.17.4",
-            "dotenv": "^16.2.0",
+            "dotenv": "^16.3.1",
             "mocha": "^10.2.0",
             "mochawesome": "^7.1.3",
             "mochawesome-merge": "^4.3.0",
