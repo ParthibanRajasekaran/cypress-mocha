@@ -32,6 +32,8 @@ describe("Herokuapp - Login", () => {
     loginPage.enterUsername("testuser");
     loginPage.enterPassword("DummyPassword");
     loginPage.clickLoginButton();
-    cy.log(loginPage.getLoginFailureMessage());
+    loginPage.getLoginFailureMessage().invoke('text').then((text) => {
+      cy.log(text);
+    });
   });
 });
