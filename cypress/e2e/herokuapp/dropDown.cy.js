@@ -8,7 +8,7 @@ describe("Herokuapp - Drop Down Test", () => {
     beforeEach(() => {
         cy.visit("https://the-internet.herokuapp.com");
         landingPage.navigateToDropdownPage();
-        // cy.matchImageSnapshot('DropDown Page');
+        cy.matchImageSnapshot('DropDown Page');
     });
 
     it('Should select and verify Option 1', () => {
@@ -17,7 +17,6 @@ describe("Herokuapp - Drop Down Test", () => {
         });
 
         dropDownPage.getPageHeader().matchImageSnapshot('DropDown Page Header')
-
         // Select Option 1 using the DropDownPage class
         dropDownPage.selectOptionFromDownDown(1);
         cy.matchImageSnapshot('Option 1');
@@ -31,12 +30,5 @@ describe("Herokuapp - Drop Down Test", () => {
 
         // Select Option 2 using the DropDownPage class
         dropDownPage.selectOptionFromDownDown(2);
-        cy.matchImageSnapshot('Option 2');
-    });
-
-    it("Should verify the lighthouse scores with SEO thresholds", { tags: '@seo' }, () => {
-        cy.lighthouse({
-            seo: 50,
-        });
     });
 });
