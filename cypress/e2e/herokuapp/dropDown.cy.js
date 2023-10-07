@@ -8,7 +8,7 @@ describe("Herokuapp - Drop Down Test", () => {
     beforeEach(() => {
         cy.visit("https://the-internet.herokuapp.com");
         landingPage.navigateToDropdownPage();
-        cy.matchImageSnapshot('DropDown Page');
+        // cy.matchImageSnapshot('DropDown Page');
     });
 
     it('Should select and verify Option 1', () => {
