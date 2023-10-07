@@ -1,5 +1,8 @@
 require("dotenv").config({ path: `.env${process.env.ENV_CONFIG}` });
 const { defineConfig } = require("cypress");
+const { addMatchImageSnapshotPlugin } = require('cypress-image-snapshot/plugin');
+const { lighthouse, prepareAudit } = require("@cypress-audit/lighthouse");
+const { pa11y } = require("@cypress-audit/pa11y");
 
 module.exports = defineConfig({
   projectId: "vwviug",
@@ -35,6 +38,17 @@ module.exports = defineConfig({
       console.log(`Tests are running on ${config.env.ENVIRONMENT} environment`);
 
       require('@cypress/grep/src/plugin')(config);
+
+      addMatchImageSnapshotPlugin(on, config);
+
+      on("before:browser:launch", (browser = {}, launchOptions) => {
+        prepareAudit(launchOptions);
+      });
+
+      on("task", {
+        lighthouse: lighthouse(),
+        pa11y: pa11y(console.log.bind(console)),
+      });
 
       return config;
     },

@@ -113,3 +113,4 @@ cypress/videos/
 result/
 results/
 log/
+ cypress/snapshots/__diff_output__

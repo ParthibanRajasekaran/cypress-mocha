@@ -18,6 +18,12 @@ import "./commands";
 
 import registerCypressGrep from '@cypress/grep/src/support'
 
+import { addMatchImageSnapshotCommand } from 'cypress-image-snapshot/command';
+
+import "@cypress-audit/lighthouse/commands";
+
+addMatchImageSnapshotCommand();
+
 registerCypressGrep()
 
 // Alternatively you can use CommonJS syntax:
