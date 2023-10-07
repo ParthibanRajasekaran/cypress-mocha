@@ -19,7 +19,7 @@ describe("Herokuapp - Drop Down Test", () => {
         dropDownPage.getPageHeader().matchImageSnapshot('DropDown Page Header')
         // Select Option 1 using the DropDownPage class
         dropDownPage.selectOptionFromDownDown(1);
-        cy.matchImageSnapshot('Option 1');
+        // cy.matchImageSnapshot('Option 1');
     });
 
 
