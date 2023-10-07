@@ -3,6 +3,7 @@ const { defineConfig } = require("cypress");
 const { addMatchImageSnapshotPlugin } = require('cypress-image-snapshot/plugin');
 const { lighthouse, prepareAudit } = require("@cypress-audit/lighthouse");
 const { pa11y } = require("@cypress-audit/pa11y");
+const now = new Date();
 
 module.exports = defineConfig({
   projectId: "vwviug",
@@ -16,6 +17,9 @@ module.exports = defineConfig({
   responseTimeout: 15000,
 
   reporter: "mochawesome",
+  reporterOptions: {
+    timestamp: (now, "UTC:h:MM:ss TT Z")
+  },
 
   viewportWidth: 1000,
   viewportHeight: 600,
