@@ -26,7 +26,7 @@ jobs:
         with:
           node-version: '20.x'
 
-      - run: npm install
+      - run: npm install --legacy-peer-deps
 
       - name: Test run
         run: npx cypress run --browser=${{ matrix.browser }} --env grepTags="-@smoke" --record --key ${{secrets.CYPRESS_RECORD_KEY}} --reporter mochawesome --reporter-options reportDir=mochawesome-report,overwrite=false KEY=${{secrets.CIPHER_KEY}}

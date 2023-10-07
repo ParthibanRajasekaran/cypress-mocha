@@ -20,7 +20,7 @@ jobs:
         with:
           node-version: '20.x'
 
-      - run: npm install
+      - run: npm install --legacy-peer-deps
 
       - name: Run Cypress tests on BrowserStack
         run: npx browserstack-cypress run --sync --username ${{ secrets.BROWSERSTACK_USERNAME }} --key ${{ secrets.BROWSERSTACK_ACCESS_KEY }} --env KEY=${{secrets.CIPHER_KEY}}
