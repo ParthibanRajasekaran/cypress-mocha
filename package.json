@@ -4,7 +4,7 @@
   "description": "Cypress playground with mocha and chai",
   "main": "index.js",
   "scripts": {
-    "test": "npx cypress run --reporter mochawesome --env grepTags='-@smoke' --config-file cypress.dev.config.js"
+    "test": "npx cypress run --browser chrome --reporter mochawesome --env grepTags='-@smoke' --config-file cypress.dev.config.js"
   },
   "repository": {
     "type": "git",
@@ -17,7 +17,7 @@
     "@cypress/grep": "^4.0.1",
     "browserstack-cypress-cli": "^1.28.2",
     "crypto-js": "^4.2.0",
-    "cypress": "^13.6.5",
+    "cypress": "^14.4.0",
     "cypress-image-snapshot": "^4.0.1",
     "dateformat": "^5.0.3",
     "dotenv": "^16.4.5",
